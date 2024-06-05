@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,15 +30,12 @@ Route::post('register',[AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function(){
-    Route::get('user', [AuthController::class, 'user']);
-
-    Route::get('appointments',[AppointmentController::class, 'index']);
-
-    Route::post('appointments/store',[AppointmentController::class, 'store']);
-
-    Route::put('appointment/{id}',[AppointmentController::class, 'show']);
-    
-    Route::put('appointment/{id}/update',[AppointmentController::class, 'update']);
-    Route::delete('appointment/{id}/delete',[AppointmentController::class, 'destroy']);
+    Route::get('user', [AuthController::class, 'user']); // WORKING 
+    Route::get('appointments',[AppointmentController::class, 'index']); // DONE
+    Route::post('appointment/store',[AppointmentController::class, 'store']); // DONE
+    Route::get('appointment/{id}',[AppointmentController::class, 'show']); // DONE
+    Route::put('appointment/{id}/update',[AppointmentController::class, 'update']); // DONE
+    Route::delete('appointment/{id}/delete',[AppointmentController::class, 'destroy']); // DONE
+    Route::get('appointment/{id}/download',[HomeController::class, 'downloadPdf']);
 });
 

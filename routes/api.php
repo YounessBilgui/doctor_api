@@ -36,6 +36,6 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::get('appointment/{id}',[AppointmentController::class, 'show']); // DONE
     Route::put('appointment/{id}/update',[AppointmentController::class, 'update']); // DONE
     Route::delete('appointment/{id}/delete',[AppointmentController::class, 'destroy']); // DONE
-    Route::get('appointment/{id}/download',[HomeController::class, 'downloadPdf']);
+    Route::get('appointment/{id}/download',[HomeController::class, 'downloadPdf']); // DONE 
 });
 

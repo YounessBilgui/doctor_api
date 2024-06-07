@@ -12,8 +12,19 @@ use Illuminate\Support\Facades\Cookie;
 class AuthController extends Controller
 {
     public function user(Request $request){
-
-        return User::all();
+        // return User::all();
+        // if ($request->user()->role ==) {
+        //     return response()->json(['error' => 'Unauthorized'], 401);
+        // }
+    
+        // Check if the authenticated user has the necessary permissions
+        if ($request->user()->role == 2 || $request->user()->role == 3 || $request->user()->role == 4) {
+            return response()->json(['error' => 'Forbidden'], 403);
+        }
+    
+        // Fetch and return user data
+        $users = User::all();
+        return response()->json($users);
         
     }
     // REGISTER 

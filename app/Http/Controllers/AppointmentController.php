@@ -18,7 +18,9 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        
+        if (Auth::user()->role == 4) {
+            return response()->json(['error' => 'Forbidden'], 403);
+        }
         $appointments = Appointment::all();
         if ($appointments->isNotEmpty()) {
             return response()->json([
@@ -95,6 +97,9 @@ class AppointmentController extends Controller
      */
     public function show($id)
     {
+        if (Auth::user()->role == 4) {
+            return response()->json(['error' => 'Forbidden'], 403);
+        }
          // Assuming you have an Appointment model
          $appointment = Appointment::find($id);
 
@@ -111,6 +116,9 @@ class AppointmentController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (Auth::user()->role == 4) {
+            return response()->json(['error' => 'Forbidden'], 403);
+        }
         $validator = Validator::make($request->all(), [
             'firstname' => 'required',
             'lastname' => 'required',
@@ -148,6 +156,9 @@ class AppointmentController extends Controller
      */
     public function destroy($id)
     {
+        if (Auth::user()->role == 4) {
+            return response()->json(['error' => 'Forbidden'], 403);
+        }
           // Find the appointment by ID
           $appointment = Appointment::find($id);
 

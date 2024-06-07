@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('phone', 10)->unique()->nullable();
             $table->rememberToken();
             $table->timestamps();
-            $table->tinyInteger('role')->default(1);
+            $table->tinyInteger('role')->default(1); // 1 admin, 2 doctor, 3 secratary, 4 user
         });
     }
 

@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Appointment;
 use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Http\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -17,4 +19,41 @@ class HomeController extends Controller
         $pdf = Pdf::loadView("pdf",['appointment' => $appointment,'user'=>$user]);
         return $pdf->download('doanload.pdf');
     }
+
+    public function appValidation($id){
+        try{
+
+        
+        if(Auth::user()->role == 4){
+            return response()->json(['error'=>'Fordiddn'],403);
+        }
+
+        $appointment = Appointment::find($id);
+
+        $appointment->status = 'validee';
+
+        $update  = $appointment->update();
+
+        if($update){
+            return response()->json([
+                "date" => $appointment
+            ], Response::HTTP_OK);
+        }
+        else{
+            return response()->json([
+                "data"=>"data not found"
+            ], Response::HTTP_NOT_FOUND);
+        }
+
+
+        }
+
+
+        catch (\Exception $e){
+            // Handle any exceptions that may occur
+            return response()->json([
+                'message' => 'An error occurred during validation: ' . $e->getMessage()
+            ], 500);
+            }
+        }
 }

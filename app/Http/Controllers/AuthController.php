@@ -82,14 +82,15 @@ class AuthController extends Controller
                 'email' => ['The provided credentials are incorrect.'],
             ]);
         }
-        // dd("hhhhh");
+        
+
 
         // generate token 
         $token = $user->createToken('API Token')->plainTextToken;
 
 
 
-        $cookie = cookie('auth_token', $token, 60 * 24);
+        $cookie = cookie('auth_token', $token, 60 * 3);
 
         return response([
             'message'=>$token

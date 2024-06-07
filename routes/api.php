@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
@@ -37,5 +38,9 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::put('appointment/{id}/update',[AppointmentController::class, 'update']); // DONE
     Route::delete('appointment/{id}/delete',[AppointmentController::class, 'destroy']); // DONE
     Route::get('appointment/{id}/download',[HomeController::class, 'downloadPdf']); // DONE 
+    Route::post('admin/store', [AdminController::class, 'CreateAccount']); // DONE
+    Route::put('admin/{id}/update', [AdminController::class, 'EditAccount']); // DONE 
+    Route::delete('admin/{id}/delete', [AdminController::class, 'DeleteAccount']);
+
 });
 

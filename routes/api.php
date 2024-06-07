@@ -40,7 +40,10 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::get('appointment/{id}/download',[HomeController::class, 'downloadPdf']); // DONE 
     Route::post('admin/store', [AdminController::class, 'CreateAccount']); // DONE
     Route::put('admin/{id}/update', [AdminController::class, 'EditAccount']); // DONE 
-    Route::delete('admin/{id}/delete', [AdminController::class, 'DeleteAccount']);
+    Route::delete('admin/{id}/delete', [AdminController::class, 'DeleteAccount']); // DONE
+    Route::put('appointment/{id}/valide',[HomeController::class, 'appValidation']);
 
+    
+    
 });
 

@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('appointments', function (Blueprint $table) {
+        Schema::create('user_details', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('patient_id');
-            $table->string('firstname');
-            $table->string('lastname');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->on('users')->references('id')->onDelete('CASCADE');
             $table->string('address');
-            $table->string('maladie');
             $table->dateTime('date_of_birth');
             $table->string('CIN');
             $table->enum('gender',['m', 'f']);
@@ -31,13 +29,10 @@ return new class extends Migration
             'AB+',
             'AB-'
             ])->nullable();
-            $table->string('status')->default('not_yet');
             $table->string('phone', 10)->unique();
-            $table->datetime('appointment_date');
             $table->string('allergies')->nullable();
             $table->string('CNSS_Number')->nullable();
             $table->timestamps();
-            $table->foreign('patient_id')->on('users')->references('id')->onDelete('CASCADE');
         });
     }
 
@@ -46,6 +41,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('appointments');
+        Schema::dropIfExists('user_details');
     }
 };

@@ -41,7 +41,10 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::post('admin/store', [AdminController::class, 'CreateAccount']); // DONE
     Route::put('admin/{id}/update', [AdminController::class, 'EditAccount']); // DONE 
     Route::delete('admin/{id}/delete', [AdminController::class, 'DeleteAccount']); // DONE
-    Route::put('appointment/{id}/valide',[HomeController::class, 'appValidation']);
+    Route::put('appointment/{id}/valide',[HomeController::class, 'appValidation']); // DONE
+    Route::get('userdetails',);
+
+    
 
     
     

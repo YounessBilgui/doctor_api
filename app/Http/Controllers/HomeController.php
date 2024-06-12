@@ -13,6 +13,8 @@ class HomeController extends Controller
 {
     //
     public function downloadPdf($id){
+        
+        
         // dd("test");
         $appointment = Appointment::find($id);
         $user = User::find($appointment->patient_id);

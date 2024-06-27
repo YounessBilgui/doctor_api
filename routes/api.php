@@ -35,7 +35,7 @@ Route::post('login', [AuthController::class, 'login']);
 
 
 Route::middleware('auth:sanctum')->group(function(){
-    Route::get('user', [AuthController::class, 'user']); // WORKING 
+    Route::get('users', [AuthController::class, 'user']); // WORKING 
     Route::get('appointments',[AppointmentController::class, 'index']); // DONE
     Route::post('appointment/store',[AppointmentController::class, 'store']); // DONE
     Route::get('appointment/{id}',[AppointmentController::class, 'show']); // DONE
@@ -46,8 +46,7 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::put('admin/{id}/update', [AdminController::class, 'EditAccount']); // DONE 
     Route::delete('admin/{id}/delete', [AdminController::class, 'DeleteAccount']); // DONE
     Route::put('appointment/{id}/valide',[HomeController::class, 'appValidation']); // DONE
-    Route::get('userdetails',);
-
+    Route::get('user', [AuthController::class, 'userVa']);
 
     
     

@@ -109,6 +109,15 @@ class AuthController extends Controller
 
         return response()->json(['message' => 'Logout successful'])->withCookie($cookie);
     }
+
+    public function userVa(){
+
+        $user = Auth::user();
+        return response()->json([
+            "user" => $user
+        ],200);
+
+    }
 }
 
 

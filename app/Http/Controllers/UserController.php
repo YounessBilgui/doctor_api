@@ -11,10 +11,11 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function update(Request $request){
+    public function update(Request $request)
+    {
 
-        $user = Auth::user();
-
+        $userLog = Auth::user();
+        $user = User::find('id', $userLog->id);
         $request->validate([
             'firstname' => 'required|string|max:20',
             'lastname' => 'required|string|max:20',
@@ -22,21 +23,19 @@ class UserController extends Controller
             'password' => 'nullable|string|min:8|confirmed',
         ]);
 
-        $user-> firstname = $request->input('firstname');
-        $user-> lastname = $request->input('lastname');
-        $user-> email = $request->input('email');
-        
+        $user->firstname = $request->input('firstname');
+        $user->lastname = $request->input('lastname');
+        $user->email = $request->input('email');
+
         if ($request->filled('password')) {
             $user->password = Hash::make($request->input('password'));
         }
 
-        $user->save();
+        $user->update();
 
         return response()->json([
             'message' => 'Profile updated successfully!',
             'user' => $user
         ]);
-
-
     }
 }

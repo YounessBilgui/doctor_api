@@ -15,7 +15,6 @@ class UserController extends Controller
     {
 
         $userLog = Auth::user();
-
         $user = User::find('id', $userLog->id);
         $request->validate([
             'firstname' => 'required|string|max:20',

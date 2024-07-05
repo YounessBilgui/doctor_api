@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Appointment;
 use App\Models\User;
-use Barryvdh\DomPDF\Facade\Pdf;
-use Illuminate\Http\Response;
+use App\Models\Appointment;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -21,6 +22,7 @@ class HomeController extends Controller
         $pdf = Pdf::loadView("pdf",['appointment' => $appointment,'user'=>$user]);
         return $pdf->download('doanload.pdf');
     }
+
 
     public function appValidation($id){
         try{

@@ -11,11 +11,18 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function update(Request $request)
+    public function hello(){
+        return "hello world";
+    }
+    public function update(Request $request,$id)
     {
-
+        return $id;
         $userLog = Auth::user();
+
         $user = User::find('id', $userLog->id);
+
+        return $user;
+
         $request->validate([
             'firstname' => 'required|string|max:20',
             'lastname' => 'required|string|max:20',

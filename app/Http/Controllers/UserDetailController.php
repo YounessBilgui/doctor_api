@@ -37,8 +37,7 @@ class UserDetailController extends Controller
         ]);
 
         $user_details = new User_detail();
-
-
+        
         $user_details->user_id = $user->id;
         $user_details->firstname = $request->firstname;
         $user_details->lastname = $request->lastname;

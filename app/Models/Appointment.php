@@ -17,7 +17,6 @@ class Appointment extends Model
         'CIN',
         'gender',
         'blood_type',
-        'status',
         'phone',
         'appointment_date',
         'allergies',

@@ -32,7 +32,7 @@ return new class extends Migration
             'AB-'
             ])->nullable();
             $table->string('status')->default('not_yet');
-            $table->string('phone', 10)->unique();
+            $table->string('phone', 10);
             $table->datetime('appointment_date');
             $table->string('allergies')->nullable();
             $table->string('CNSS_Number')->nullable();

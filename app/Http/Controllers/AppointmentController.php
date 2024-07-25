@@ -52,7 +52,6 @@ class AppointmentController extends Controller
             "CIN" => "required",
             "gender" => "required|in:m,f",
             "blood_type" => "nullable|in:O-,O+,A+,A-,B+,B-,AB+,AB-",
-            "status" => "required",
             "phone" => "required", // replace table_name with your actual table name
             "appointment_date" => "required|date",
             "allergies" => "nullable",
@@ -71,7 +70,6 @@ class AppointmentController extends Controller
         $Appointment->CIN = $request->CIN;
         $Appointment->gender = $request->gender;
         $Appointment->blood_type = $request->blood_type;
-        $Appointment->status = $request->status;
         $Appointment->phone = $request->phone;
         $Appointment->appointment_date = $request->appointment_date;
         $Appointment->allergies = $request->allergies;
@@ -128,7 +126,6 @@ class AppointmentController extends Controller
             'CIN' => 'required',
             'gender' => 'required|in:m,f',
             'blood_type' => 'nullable|in:O-,O+,A+,A-,B+,B-,AB+,AB-',
-            'status' => 'required',
             'phone' => 'required',
             'appointment_date' => 'required|date',
             'allergies' => 'nullable',
